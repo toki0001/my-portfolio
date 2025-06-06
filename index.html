@@ -6,13 +6,14 @@
     <title>時駆のポートフォリオ</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* Modern dark theme */
+        /* Modern theme with better contrast */
         :root {
-            --primary-color: #ffffff;
-            --background-color: #000000;
+            --primary-color: #2c3e50;
+            --background-color: #f5f5f5;
             --accent-color: #3498db;
-            --text-color: #ffffff;
-            --secondary-bg: #111111;
+            --text-color: #2c3e50;
+            --card-bg: #ffffff;
+            --section-bg: #ffffff;
         }
 
         * {
@@ -33,10 +34,11 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             z-index: 1000;
             padding: 1rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         nav {
@@ -48,8 +50,9 @@
         }
 
         .logo {
-            font-size: 1.2rem;
-            font-weight: 600;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
             letter-spacing: 1px;
         }
 
@@ -60,9 +63,10 @@
         }
 
         .nav-links a {
-            color: var(--text-color);
+            color: var(--primary-color);
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 1rem;
+            font-weight: 500;
             letter-spacing: 1px;
             transition: color 0.3s ease;
         }
@@ -79,17 +83,8 @@
             justify-content: center;
             padding: 2rem;
             position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, rgba(52, 152, 219, 0.1), rgba(0, 0, 0, 0));
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: white;
         }
 
         .hero-content {
@@ -99,29 +94,34 @@
         }
 
         .hero-content h1 {
-            font-size: 3.5rem;
+            font-size: 4rem;
             font-weight: 700;
             margin-bottom: 1rem;
             line-height: 1.2;
         }
 
         .hero-content p {
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             opacity: 0.9;
         }
 
         /* Sections */
         section {
-            padding: 8rem 2rem;
+            padding: 6rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
+        }
+
+        section:nth-child(even) {
+            background: var(--section-bg);
         }
 
         h2 {
             font-size: 2.5rem;
             margin-bottom: 3rem;
             text-align: center;
-            font-weight: 600;
+            font-weight: 700;
+            color: var(--primary-color);
         }
 
         /* Skills grid */
@@ -129,23 +129,33 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
+            padding: 1rem;
         }
 
         .skill-card {
-            background: var(--secondary-bg);
+            background: var(--card-bg);
             padding: 2rem;
-            border-radius: 10px;
-            transition: transform 0.3s ease;
+            border-radius: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
         }
 
         .skill-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
         }
 
         .skill-card i {
-            font-size: 2.5rem;
+            font-size: 3rem;
             color: var(--accent-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-card h3 {
+            font-size: 1.5rem;
             margin-bottom: 1rem;
+            color: var(--primary-color);
         }
 
         /* Projects grid */
@@ -153,17 +163,20 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
+            padding: 1rem;
         }
 
         .project-card {
-            background: var(--secondary-bg);
-            border-radius: 10px;
+            background: var(--card-bg);
+            border-radius: 15px;
             overflow: hidden;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
         .project-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
         }
 
         .project-card img {
@@ -172,16 +185,23 @@
             object-fit: cover;
         }
 
-        .project-card h3, .project-card p {
+        .project-content {
             padding: 1.5rem;
+        }
+
+        .project-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
         }
 
         /* Contact section */
         .contact {
             text-align: center;
-            background: var(--secondary-bg);
-            border-radius: 10px;
+            background: var(--section-bg);
+            border-radius: 15px;
             padding: 4rem 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
         .social-links {
@@ -192,21 +212,17 @@
         }
 
         .social-links a {
-            color: var(--text-color);
-            font-size: 1.5rem;
-            transition: color 0.3s ease;
-        }
-
-        .social-links a:hover {
-            color: var(--accent-color);
+            color: var(--primary-color);
+            font-size: 2rem;
+            transform: translateY(-3px);
         }
 
         /* Footer */
         footer {
-            background: var(--secondary-bg);
+            background: var(--primary-color);
             padding: 2rem;
             text-align: center;
-            margin-top: 4rem;
+            color: white;
         }
 
         /* Animations */
@@ -227,6 +243,10 @@
 
             .nav-links {
                 display: none;
+            }
+
+            section {
+                padding: 4rem 1rem;
             }
         }
     </style>
@@ -257,7 +277,15 @@
             <h2>ABOUT</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <p>Web開発の世界に情熱を持って取り組んでいます。新しい技術を学び、創造的なソリューションを生み出すことに喜びを感じています。</p>
+                    <p>
+                        はじめまして、時駆です。<br>
+                        Web開発の世界で日々新しいことを学び、成長を続けています。<br>
+                        特にフロントエンド開発に興味があり、ユーザーにとって使いやすく、
+                        魅力的なインターフェースを作ることを心がけています。<br>
+                        <br>
+                        「技術を通じて、人々の生活をより良くする」<br>
+                        これが私の目標です。
+                    </p>
                 </div>
             </div>
         </section>
@@ -287,14 +315,18 @@
             <h2>PROJECTS</h2>
             <div class="projects-grid">
                 <div class="project-card">
-                    <img src="https://via.placeholder.com/300" alt="ポートフォリオ">
-                    <h3>ポートフォリオサイト</h3>
-                    <p>HTML、CSS、JavaScriptを使用して作成した自己紹介サイトです。</p>
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200' fill='%23f0f0f0'%3E%3Crect width='300' height='200'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='24' fill='%23666666'%3EPortfolio%3C/text%3E%3C/svg%3E" alt="ポートフォリオ">
+                    <div class="project-content">
+                        <h3>ポートフォリオサイト</h3>
+                        <p>HTML、CSS、JavaScriptを使用して作成した自己紹介サイトです。</p>
+                    </div>
                 </div>
                 <div class="project-card">
-                    <img src="https://via.placeholder.com/300" alt="プロジェクト">
-                    <h3>Coming Soon</h3>
-                    <p>新しいプロジェクトに取り組み中です。</p>
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200' fill='%23f0f0f0'%3E%3Crect width='300' height='200'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='24' fill='%23666666'%3EComing Soon%3C/text%3E%3C/svg%3E" alt="Coming Soon">
+                    <div class="project-content">
+                        <h3>Coming Soon</h3>
+                        <p>新しいプロジェクトに取り組み中です。</p>
+                    </div>
                 </div>
             </div>
         </section>
