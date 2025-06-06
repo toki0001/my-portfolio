@@ -3,20 +3,244 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>時駆のポートフォリオ</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* Modern dark theme */
+        :root {
+            --primary-color: #ffffff;
+            --background-color: #000000;
+            --accent-color: #3498db;
+            --text-color: #ffffff;
+            --secondary-bg: #111111;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Modern header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hero section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(52, 152, 219, 0.1), rgba(0, 0, 0, 0));
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Sections */
+        section {
+            padding: 8rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        /* Skills grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: var(--secondary-bg);
+            padding: 2rem;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-card i {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Projects grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--secondary-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .project-card h3, .project-card p {
+            padding: 1.5rem;
+        }
+
+        /* Contact section */
+        .contact {
+            text-align: center;
+            background: var(--secondary-bg);
+            border-radius: 10px;
+            padding: 4rem 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            color: var(--text-color);
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary-bg);
+            padding: 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .skill-card, .project-card {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
         <nav>
-            <div class="logo">Portfolio</div>
+            <div class="logo">TOKI</div>
             <ul class="nav-links">
-                <li><a href="#home">ホーム</a></li>
-                <li><a href="#about">自己紹介</a></li>
-                <li><a href="#skills">スキル</a></li>
-                <li><a href="#projects">プロジェクト</a></li>
-                <li><a href="#contact">お問い合わせ</a></li>
+                <li><a href="#home">HOME</a></li>
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#skills">SKILLS</a></li>
+                <li><a href="#projects">PROJECTS</a></li>
+                <li><a href="#contact">CONTACT</a></li>
             </ul>
         </nav>
     </header>
@@ -24,59 +248,61 @@
     <main>
         <section id="home" class="hero">
             <div class="hero-content">
-                <h1>ようこそ、私のポートフォリオへ</h1>
-                <p>Web開発者 / デザイナー</p>
+                <h1>時駆</h1>
+                <p>Web Developer / Creator</p>
             </div>
         </section>
 
         <section id="about" class="about">
-            <h2>自己紹介</h2>
+            <h2>ABOUT</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <h3>時駆</h3>
-                    <p>ここに自己紹介文を入れてください。あなたの経歴、目標、情熱などについて書きましょう。</p>
+                    <p>Web開発の世界に情熱を持って取り組んでいます。新しい技術を学び、創造的なソリューションを生み出すことに喜びを感じています。</p>
                 </div>
             </div>
         </section>
 
         <section id="skills" class="skills">
-            <h2>スキル</h2>
+            <h2>SKILLS</h2>
             <div class="skills-grid">
                 <div class="skill-card">
                     <i class="fab fa-html5"></i>
                     <h3>HTML5</h3>
+                    <p>基本的なマークアップから、セマンティックなHTML構造の設計まで</p>
                 </div>
                 <div class="skill-card">
                     <i class="fab fa-css3-alt"></i>
                     <h3>CSS3</h3>
+                    <p>レスポンシブデザイン、モダンなレイアウト設計</p>
                 </div>
                 <div class="skill-card">
                     <i class="fab fa-js"></i>
                     <h3>JavaScript</h3>
+                    <p>インタラクティブなUI実装、基本的な機能開発</p>
                 </div>
             </div>
         </section>
 
         <section id="projects" class="projects">
-            <h2>プロジェクト</h2>
+            <h2>PROJECTS</h2>
             <div class="projects-grid">
                 <div class="project-card">
-                    <img src="https://via.placeholder.com/300" alt="プロジェクト1">
-                    <h3>プロジェクト1</h3>
-                    <p>プロジェクトの説明をここに記載します。</p>
+                    <img src="https://via.placeholder.com/300" alt="ポートフォリオ">
+                    <h3>ポートフォリオサイト</h3>
+                    <p>HTML、CSS、JavaScriptを使用して作成した自己紹介サイトです。</p>
                 </div>
                 <div class="project-card">
-                    <img src="https://via.placeholder.com/300" alt="プロジェクト2">
-                    <h3>プロジェクト2</h3>
-                    <p>プロジェクトの説明をここに記載します。</p>
+                    <img src="https://via.placeholder.com/300" alt="プロジェクト">
+                    <h3>Coming Soon</h3>
+                    <p>新しいプロジェクトに取り組み中です。</p>
                 </div>
             </div>
         </section>
 
         <section id="contact" class="contact">
-            <h2>お問い合わせ</h2>
+            <h2>CONTACT</h2>
             <div class="social-links">
-                <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://github.com/toki0001" target="_blank"><i class="fab fa-github"></i></a>
                 <a href="https://x.com/ACkou7" target="_blank"><i class="fab fa-x-twitter"></i></a>
                 <a href="mailto:your.email@example.com"><i class="fas fa-envelope"></i></a>
             </div>
@@ -84,9 +310,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2024 My Portfolio. All rights reserved.</p>
+        <p>&copy; 2024 TOKI. All rights reserved.</p>
     </footer>
-
-    <script src="js/main.js"></script>
 </body>
-</html> 
+</html>
